@@ -28,9 +28,19 @@ struct LibraryView_Previews: PreviewProvider {
 } */
 import SwiftUI
 
+struct Album: Identifiable {
+    let id = UUID()
+    var images: [UIImage]
+    var coverImage: UIImage? {
+        images.first
+    }
+}
+
 struct LibraryView: View {
+    @State private var albums: [Album] = []
     @State private var selectedImages: [UIImage] = []
     @State private var isPhotoPickerPresented = false
+    @State private var selectedAlbum: Album?
 
     var body: some View {
         NavigationView {
@@ -39,15 +49,31 @@ struct LibraryView: View {
                     .font(.largeTitle)
                     .padding()
 
-                // Visualizza le immagini selezionate
+                // Visualizza gli album
                 ScrollView {
-                    ForEach(selectedImages, id: \.self) { image in
-                        Image(uiImage: image)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 200)
-                            .cornerRadius(10)
-                            .padding(.vertical, 5)
+                    ForEach(albums) { album in
+                        VStack {
+                            if let coverImage = album.coverImage {
+                                NavigationLink(destination: AlbumView(album: album)) {
+                                    Image(uiImage: coverImage)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: 200)
+                                        .cornerRadius(10)
+                                        .padding(.vertical, 5)
+                                        .overlay(
+                                            Text("Album \(album.id.uuidString.prefix(4))")
+                                                .font(.headline)
+                                                .foregroundColor(.white)
+                                                .padding(5)
+                                                .background(Color.black.opacity(0.7))
+                                                .cornerRadius(10),
+                                            alignment: .bottomLeading
+                                        )
+                                }
+                            }
+                        }
+                        .padding(.vertical, 10)
                     }
                 }
 
@@ -63,10 +89,16 @@ struct LibraryView: View {
                     }
                 }
             }
-            .sheet(isPresented: $isPhotoPickerPresented) {
+            .sheet(isPresented: $isPhotoPickerPresented, onDismiss: createNewAlbum) {
                 PhotoPicker(selectedImages: $selectedImages)
             }
         }
+    }
+
+    private func createNewAlbum() {
+        guard !selectedImages.isEmpty else { return }
+        albums.append(Album(images: selectedImages))
+        selectedImages.removeAll()
     }
 }
 

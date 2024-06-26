@@ -1,15 +1,9 @@
-//
-//  PHPickerViewController.swift
-//  App_swiftiu
-//
-//  Created by Giuseppe Cristiano on 26/06/24.
-//
-
 import SwiftUI
 import PhotosUI
 
 struct PhotoPicker: UIViewControllerRepresentable {
     @Binding var selectedImages: [UIImage]
+    var onDismiss: (() -> Void)? = nil
 
     class Coordinator: NSObject, PHPickerViewControllerDelegate {
         var parent: PhotoPicker
@@ -19,7 +13,9 @@ struct PhotoPicker: UIViewControllerRepresentable {
         }
 
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-            picker.dismiss(animated: true)
+            picker.dismiss(animated: true) {
+                self.parent.onDismiss?()
+            }
 
             for result in results {
                 if result.itemProvider.canLoadObject(ofClass: UIImage.self) {

@@ -10,18 +10,18 @@ struct AlbumView: View {
                 if let coverImage = album.coverImage {
                     Image(uiImage: coverImage)
                         .resizable()
-                        .aspectRatio(contentMode: .fill) // Fill per mantenere le proporzioni e riempire lo spazio
+                        .aspectRatio(contentMode: .fill)
                         .frame(width: 200, height: 200)
                         .cornerRadius(10)
                         .shadow(radius: 3)
-                        .clipped() // Clipped per assicurarsi che l'immagine non esca dal frame
+                        .clipped()
                 }
-                
+
                 // Visualizzazione delle immagini dell'album
                 ForEach(album.images, id: \.self) { image in
                     Image(uiImage: image)
                         .resizable()
-                        .aspectRatio(contentMode: .fill) // Fill per mantenere le proporzioni e riempire lo spazio
+                        .aspectRatio(contentMode: .fill)
                         .frame(width: 200, height: 200)
                         .cornerRadius(10)
                         .shadow(radius: 3)

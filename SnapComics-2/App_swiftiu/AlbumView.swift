@@ -1,11 +1,3 @@
-//
-//  AlbumView.swift
-//  App_swiftiu
-//
-//  Created by Eliodoro Mascolo on 26/06/24.
-//
-
-import Foundation
 import SwiftUI
 
 struct AlbumView: View {
@@ -13,14 +5,26 @@ struct AlbumView: View {
 
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: 10) {
+                // Visualizzazione dell'immagine di copertina
+                if let coverImage = album.coverImage {
+                    Image(uiImage: coverImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill) // Fill per mantenere le proporzioni e riempire lo spazio
+                        .frame(width: 200, height: 200)
+                        .cornerRadius(10)
+                        .shadow(radius: 3)
+                        .clipped() // Clipped per assicurarsi che l'immagine non esca dal frame
+                }
+                
+                // Visualizzazione delle immagini dell'album
                 ForEach(album.images, id: \.self) { image in
                     Image(uiImage: image)
                         .resizable()
-                        .scaledToFit()
-                        .frame(height: 200)
+                        .aspectRatio(contentMode: .fill) // Fill per mantenere le proporzioni e riempire lo spazio
+                        .frame(width: 200, height: 200)
                         .cornerRadius(10)
-                        .padding(.vertical, 5)
+                        .shadow(radius: 3)
                 }
             }
             .padding()
@@ -36,6 +40,6 @@ struct AlbumView_Previews: PreviewProvider {
             UIImage(systemName: "photo.fill")!
         ]
         let sampleAlbum = Album(images: sampleImages)
-        AlbumView(album: sampleAlbum)
+        return AlbumView(album: sampleAlbum)
     }
 }

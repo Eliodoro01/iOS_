@@ -393,7 +393,7 @@ struct ContentView: View {
         NavigationView {
             ZStack {
                 // Background
-                Image("Wallpaper")
+                Image("red")
                     .resizable()
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.all)

@@ -6,79 +6,87 @@ struct LibraryView: View {
     @State private var isPhotoPickerPresented = false
 
     var body: some View {
-     
-            List {
-                Section(header:
-                            Text("Reading Now")
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .foregroundColor(.black)
-                ) {
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("Current")
-                            .font(.title3)
+        List {
+            Section(header:
+                        Text("Reading Now")
+                            .font(.title)
                             .fontWeight(.bold)
-                            .padding(.top, 10)
-                            .padding(.bottom, 10)
+                            .foregroundColor(.black)
+                            .padding(.leading, -20)
+            ) {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Current")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .padding(.top, -30)
+                        .padding(.bottom, 30)
+                        .padding(.leading, 35)
 
-                        HStack(spacing: 20) {
-                            // Box sinistra con Paperino
-                            VStack(alignment: .leading, spacing: 10) {
-                                if let image = selectedImages.first {
-                                    Image(uiImage: image)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 100, height: 150)
-                                        .cornerRadius(10)
-                                } else {
-                                    Image("PAPERINO") // Utilizza l'immagine dall'asset chiamata "PAPERINO"
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 100, height: 150)
-                                        .cornerRadius(10)
-                                }
-                                Text("Paperino")
-                                    .font(.title3)
-                                    .foregroundColor(.black)
-                                    .padding(.top, 5)
-                                    .padding(.bottom, 10)
+                    HStack(spacing: -10) {
+                        // Box sinistra con Paperino
+                        VStack(alignment: .leading, spacing: 10) {
+                            if let image = selectedImages.first {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 150, height: 220)
+                                    .cornerRadius(10)
+                            } else {
+                                Image("viaggiatori")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 150, height: 220)
+                                    .cornerRadius(10)
                             }
-                            .padding(.horizontal)
-
-                            // Box destra con Topolino
-                            VStack(alignment: .leading, spacing: 10) {
-                                if let image = selectedImages.last {
-                                    Image(uiImage: image)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 100, height: 150)
-                                        .cornerRadius(10)
-                                } else {
-                                    Image("topolino") // Utilizza l'immagine dall'asset chiamata "TOPOLINO"
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 100, height: 150)
-                                        .cornerRadius(10)
-                                }
-                                Text("Topolino")
-                                    .font(.title3)
-                                    .foregroundColor(.black)
-                                    .padding(.top, 5)
-                                    .padding(.bottom, 10)
-                            }
-                            .padding(.horizontal)
-                        }
-                    }
-                    .padding(.horizontal)
-                }
-
-                Section(header:
-                            Text("Ready to Read")
-                                .font(.title)
-                                .fontWeight(.bold)
+                            Text("Topolino e il regalo su misura 1")
+                                .font(.title3)
                                 .foregroundColor(.black)
-                ) {
-                    ForEach(albums) { album in
+                                .padding(.top, 5)
+                                .padding(.bottom, 10)
+                                .padding(.leading, 20)
+                        }
+                        .padding(.horizontal, 10)
+
+                        // Box destra con Topolino
+                        VStack(alignment: .leading, spacing: 10) {
+                            if let image = selectedImages.last {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 150, height: 220)
+                                  
+                            } else {
+                                Image("natale")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 150, height: 220)
+                                  
+                            }
+                            Text("Topolino viaggiatori nel tempo")
+                                .font(.title3)
+                                .foregroundColor(.black)
+                                .padding(.top, 5)
+                                .padding(.bottom, 10)
+                                .padding(.leading, 20)
+                        }
+                        .padding(.horizontal, 10)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, -30) // Riduce il padding verticale della sezione "Reading Now"
+                }
+                .padding(.horizontal, 10)
+            }
+
+            Section(header:
+                        Text("Ready to Read")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(.black)
+                            .padding(.leading, -20)
+            ) {
+                ForEach(albums) { album in
+                    if !album.images.isEmpty {
                         VStack(alignment: .leading, spacing: 10) {
                             NavigationLink(destination: AlbumView(album: album)) {
                                 if let coverImage = album.coverImage {
@@ -89,7 +97,7 @@ struct LibraryView: View {
                                         .cornerRadius(10)
                                         .padding(.vertical, 5)
                                         .overlay(
-                                            Text("Album \(album.id.uuidString.prefix(4))")
+                                            Text("Album \(album.formattedCreationDateTime.prefix(16))") // Mostra solo i primi 16 caratteri (data e ora)
                                                 .font(.headline)
                                                 .foregroundColor(.white)
                                                 .padding(5)
@@ -99,47 +107,53 @@ struct LibraryView: View {
                                         )
                                 }
                             }
+                            .contextMenu {
+                                Button(action: {
+                                    Album.deleteAlbum(with: album.id)
+                                    albums.removeAll { $0.id == album.id }
+                                }) {
+                                    Label("Delete Album", systemImage: "trash")
+                                }
+                            }
                         }
                         .padding(.vertical, 10)
-                        .padding(.horizontal)
-                    }
-
-                    // Bottone per aggiungere foto centrato
-                    Button(action: {
-                        isPhotoPickerPresented.toggle()
-                    }) {
-                        HStack {
-                            Image(systemName: "plus")
-                            Text("Add Photos")
-                        }
-                        .foregroundColor(.black)
-                        .padding()
-                        .background(Color.gray.opacity(0.2))
-                        .cornerRadius(10)
-                        .frame(maxWidth: .infinity)
-                        .padding(.horizontal)
+                        .padding(.horizontal, 10) // Riduce il padding orizzontale intorno a ciascun album
                     }
                 }
+
+                Button(action: {
+                    isPhotoPickerPresented.toggle()
+                }) {
+                    HStack {
+                        Image(systemName: "plus")
+                        Text("Add Photos")
+                    }
+                    .foregroundColor(.black)
+                    .padding()
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(10)
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal)
+                }
             }
-            .listStyle(InsetGroupedListStyle())
-            .sheet(isPresented: $isPhotoPickerPresented, onDismiss: createNewAlbum) {
-                PhotoPicker(selectedImages: $selectedImages)
-            }
-            .onAppear(perform: loadAlbums)
-        
+        }
+        .listStyle(InsetGroupedListStyle())
+        .sheet(isPresented: $isPhotoPickerPresented, onDismiss: createNewAlbum) {
+            PhotoPicker(selectedImages: $selectedImages)
+        }
+        .onAppear(perform: loadAlbums)
     }
 
     private func createNewAlbum() {
         guard !selectedImages.isEmpty else { return }
-        let imagesCopy = selectedImages.map { $0 }
-        Album.salvaImmagini(imagesCopy)
-        let newAlbum = Album(images: imagesCopy)
+        let newAlbum = Album(images: selectedImages)
+        Album.salvaAlbum(newAlbum)
         albums.append(newAlbum)
-        selectedImages.removeAll() // Svuotiamo l'array delle immagini selezionate
+        selectedImages.removeAll()
     }
 
     private func loadAlbums() {
-        albums = Album.caricaImmagini().map { Album(images: [$0]) }
+        albums = Album.caricaAlbum()
     }
 }
 

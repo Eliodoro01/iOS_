@@ -520,7 +520,7 @@ struct ContentView: View {
             return
         }
 
-        guard let model = try? VNCoreMLModel(for: MyImageClassifier_1().model) else {
+        guard let model = try? VNCoreMLModel(for: MIC().model) else {
             print("Errore durante il caricamento del modello di Object Detection.")
             return
         }

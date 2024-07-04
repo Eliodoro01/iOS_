@@ -37,25 +37,25 @@ struct LibraryView: View {
                                             .cornerRadius(10)
                                             
                                     } else {
-                                        Image("natale")
+                                        Image("Soggetto")
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(width: 150, height: 220)
-                                            .cornerRadius(10)
+                                            .frame(width: 180, height: 240)
+                                            
                                             .padding(.leading, 60)
 
                                     }
                                 }
                                 .padding(.top, 5)
                                 .padding(.leading, -50)
-                                Text("Il regalo su misura")
+                                Text("'Il regalo su misura'")
                                     .font(.custom("menlo", size: 22))
                                     .font(.title3)
                                     .foregroundColor(.black)
                                     .padding(.top, 5)
                                     .padding(.bottom, 50)
                                     .padding(.leading, 20)
-                                
+                                    .fontWeight(.bold)
                             
                                 Text("anno:2007")
                                     .font(.custom("menlo", size: 16))

@@ -4,8 +4,10 @@ struct LibraryView: View {
     @State private var albums: [Album] = []
     @State private var selectedImages: [UIImage] = []
     @State private var isPhotoPickerPresented = false
+    @State private var isImageViewPresented = false // Per gestire la presentazione della ImageView
 
     var body: some View {
+        
         List {
             Section(header:
                         Text("Reading Now")
@@ -18,56 +20,42 @@ struct LibraryView: View {
                     Text("Current")
                         .font(.title3)
                         .fontWeight(.bold)
-                        .padding(.top, -30)
+                        .padding(.top, 0)
                         .padding(.bottom, 30)
-                        .padding(.leading, 35)
+                        .padding(.leading, -15)
 
                     HStack(spacing: -10) {
-                        // Box sinistra con Paperino
+                        // Box sinistra
                         VStack(alignment: .leading, spacing: 10) {
-                            if let image = selectedImages.first {
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 150, height: 220)
-                                    .cornerRadius(10)
-                            } else {
-                                Image("viaggiatori")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 150, height: 220)
-                                    .cornerRadius(10)
+                            Button(action: {
+                                // Azione da eseguire al click sull'immagine
+                                isImageViewPresented.toggle()
+                            }) {
+                                if let image = selectedImages.first {
+                                    Image(uiImage: image)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 150, height: 220)
+                                        .cornerRadius(10)
+                                } else {
+                                    Image("natale")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 150, height: 220)
+                                        .cornerRadius(10)
+                                }
                             }
+                            .sheet(isPresented: $isImageViewPresented) {
+                                ImageView()
+                            }
+                            .padding(.top, 5)
+                            .padding(.leading, -50)
                             Text("Topolino e il regalo su misura 1")
                                 .font(.title3)
                                 .foregroundColor(.black)
                                 .padding(.top, 5)
-                                .padding(.bottom, 10)
-                                .padding(.leading, 20)
-                        }
-                        .padding(.horizontal, 10)
-
-                        // Box destra con Topolino
-                        VStack(alignment: .leading, spacing: 10) {
-                            if let image = selectedImages.last {
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 150, height: 220)
-                                  
-                            } else {
-                                Image("natale")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 150, height: 220)
-                                  
-                            }
-                            Text("Topolino viaggiatori nel tempo")
-                                .font(.title3)
-                                .foregroundColor(.black)
-                                .padding(.top, 5)
-                                .padding(.bottom, 10)
-                                .padding(.leading, 20)
+                                .padding(.bottom, 50)
+                                .padding(.leading, -50)
                         }
                         .padding(.horizontal, 10)
                     }
@@ -76,8 +64,8 @@ struct LibraryView: View {
                     .padding(.vertical, -30) // Riduce il padding verticale della sezione "Reading Now"
                 }
                 .padding(.horizontal, 10)
-            }
 
+            }
             Section(header:
                         Text("Ready to Read")
                             .font(.title)
@@ -128,9 +116,9 @@ struct LibraryView: View {
                         Image(systemName: "plus")
                         Text("Add Photos")
                     }
-                    .foregroundColor(.black)
+                    .foregroundColor(.white)
                     .padding()
-                    .background(Color.gray.opacity(0.2))
+                    .background(Color(hue: 240/360, saturation: 0.75, brightness: 0.9))
                     .cornerRadius(10)
                     .frame(maxWidth: .infinity)
                     .padding(.horizontal)

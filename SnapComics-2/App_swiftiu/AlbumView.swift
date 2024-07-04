@@ -1,9 +1,18 @@
 import SwiftUI
+import AVFoundation
+import Vision
 
 struct AlbumView: View {
     let album: Album
     @State private var isShowingConfirmationAlert = false
     @Environment(\.presentationMode) var presentationMode
+
+    let synthesizer = AVSpeechSynthesizer()
+    @State private var isSpeaking = false
+    @State private var currentUtterance: AVSpeechUtterance?
+    @State private var shouldResumeSpeech = false
+    @State private var playbackPosition: Int = 0 // Traccia la posizione di riproduzione
+    @State private var currentIndex: Int = 0 // Indice dell'immagine corrente
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -18,23 +27,96 @@ struct AlbumView: View {
                         .clipped()
                 }
 
-                ForEach(album.images, id: \.self) { image in
+                ForEach(album.images.indices, id: \.self) { index in
+                    let image = album.images[index]
                     Image(uiImage: image)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 200, height: 200)
                         .cornerRadius(10)
                         .shadow(radius: 3)
+                        .onTapGesture {
+                            let text = recognizeText(from: image)
+                            speakText(text, atIndex: index)
+                        }
+                        .opacity(index == currentIndex ? 1.0 : 0.6) // Opacità immagine corrente
                 }
 
                 Text("Created on: \(album.formattedCreationDateTime)")
                     .font(.subheadline)
                     .foregroundColor(.gray)
                     .padding(.top, 10)
+
+                HStack(spacing: 20) {
+                    Button(action: {
+                        previousImage()
+                    }) {
+                        Image(systemName: "arrow.left")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 40, height: 40)
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.blue)
+                            .clipShape(Circle())
+                            .overlay(
+                                Circle().stroke(Color.black, lineWidth: 2)
+                            )
+                    }
+
+                    Button(action: {
+                        toggleSpeech()
+                    }) {
+                        Image(systemName: isSpeaking ? "pause.fill" : "play.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 40, height: 40)
+                            .foregroundColor(.blue)
+                            .padding()
+                            .background(Color.white)
+                            .clipShape(Circle())
+                            .overlay(
+                                Circle().stroke(Color.black, lineWidth: 2)
+                            )
+                    }
+
+                    Button(action: {
+                        repeatContent()
+                    }) {
+                        Image(systemName: "arrow.counterclockwise")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 40, height: 40)
+                            .foregroundColor(.blue)
+                            .padding()
+                            .background(Color.white)
+                            .clipShape(Circle())
+                            .overlay(
+                                Circle().stroke(Color.black, lineWidth: 2)
+                            )
+                    }
+
+                    Button(action: {
+                        nextImage()
+                    }) {
+                        Image(systemName: "arrow.right")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 40, height: 40)
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.blue)
+                            .clipShape(Circle())
+                            .overlay(
+                                Circle().stroke(Color.black, lineWidth: 2)
+                            )
+                    }
+                }
+                .padding(.top, 20)
             }
             .padding()
         }
-        .navigationTitle("Album \(album.formattedCreationDateTime.prefix(16))") // Mostra solo i primi 16 caratteri (data e ora)
+        .navigationTitle("Album \(album.formattedCreationDateTime.prefix(16))")
         .navigationBarItems(trailing:
             Button(action: {
                 isShowingConfirmationAlert = true
@@ -59,6 +141,106 @@ struct AlbumView: View {
     private func deleteAlbum() {
         Album.deleteAlbum(with: album.id)
         presentationMode.wrappedValue.dismiss()
+    }
+
+    private func recognizeText(from image: UIImage) -> String {
+        guard let ciImage = CIImage(image: image) else {
+            print("Unable to convert image to CIImage.")
+            return ""
+        }
+
+        var recognizedText = ""
+
+        let handler = VNImageRequestHandler(ciImage: ciImage)
+        let ocrRequest = VNRecognizeTextRequest { request, error in
+            if let results = request.results as? [VNRecognizedTextObservation] {
+                recognizedText = results.compactMap { observation in
+                    observation.topCandidates(1).first?.string
+                }.joined(separator: "\n")
+            }
+        }
+
+        do {
+            try handler.perform([ocrRequest])
+        } catch {
+            print("Error performing OCR request: \(error)")
+        }
+
+        return recognizedText
+    }
+
+    private func speakText(_ text: String, atIndex index: Int) {
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.rate = 0.25
+        utterance.voice = AVSpeechSynthesisVoice(language: "it-IT")
+
+        if shouldResumeSpeech {
+            synthesizer.continueSpeaking()
+        } else {
+            synthesizer.stopSpeaking(at: .immediate)
+            synthesizer.speak(utterance)
+            currentUtterance = utterance
+            isSpeaking = true
+        }
+
+        shouldResumeSpeech = false
+        playbackPosition = index
+    }
+
+    private func toggleSpeech() {
+        if isSpeaking {
+            synthesizer.pauseSpeaking(at: .immediate)
+            isSpeaking = false
+        } else {
+            if currentUtterance == nil {
+                if let firstImage = album.images.first {
+                    let text = recognizeText(from: firstImage)
+                    speakText(text, atIndex: 0)
+                }
+            } else {
+                synthesizer.continueSpeaking()
+                isSpeaking = true
+            }
+        }
+    }
+
+    private func repeatContent() {
+        if let currentImage = album.images[safe: playbackPosition] {
+            let text = recognizeText(from: currentImage)
+            speakText(text, atIndex: playbackPosition)
+        }
+    }
+
+    private func previousImage() {
+        currentIndex -= 1
+        if currentIndex < 0 {
+            currentIndex = album.images.count - 1
+        }
+        
+        // Speak the text of the new current image if speech is active
+        if isSpeaking {
+            let text = recognizeText(from: album.images[currentIndex])
+            speakText(text, atIndex: currentIndex)
+        }
+    }
+
+    private func nextImage() {
+        currentIndex += 1
+        if currentIndex >= album.images.count {
+            currentIndex = 0
+        }
+        
+        // Speak the text of the new current image if speech is active
+        if isSpeaking {
+            let text = recognizeText(from: album.images[currentIndex])
+            speakText(text, atIndex: currentIndex)
+        }
+    }
+}
+
+extension Array {
+    subscript(safe index: Index) -> Element? {
+        indices.contains(index) ? self[index] : nil
     }
 }
 

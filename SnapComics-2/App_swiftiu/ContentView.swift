@@ -408,14 +408,16 @@ struct ContentView: View {
                                 .padding()
                                 .background(
                                     Circle()
-                                        .foregroundColor(Color.black.opacity(0.7))
+                                        .foregroundColor(Color(hue: 240/360, saturation: 0.95, brightness: 0.7)) // Esempio: un blu personalizzato più scuro
+                                                    
                                 )
                             Text("Library")
                                 .foregroundColor(.white)
                         }
+                        .padding()
+                        .position(x: (UIScreen.main.bounds.width / 2) + 25, y: 170) //
                     }
-                    .padding()
-                    .position(x: (UIScreen.main.bounds.width / 2) + 15 , y: 150) //
+           
  // Posiziona il bottone al centro orizzontalmente, 150 punti dal bordo superiore
 
                     // Bottone per accedere alla fotocamera
@@ -429,14 +431,14 @@ struct ContentView: View {
                                 .padding()
                                 .background(
                                     Circle()
-                                        .foregroundColor(Color.black.opacity(0.7))
+                                        .foregroundColor(Color(hue: 240/360, saturation: 0.95, brightness: 0.7))
                                 )
                             Text("Camera")
                                 .foregroundColor(.white)
                         }
                     }
                     .padding()
-                    .position(x: (UIScreen.main.bounds.width / 2)+15, y: 30)// Posiziona il bottone al centro orizzontalmente, 300 punti dal bordo superiore
+                    .position(x: (UIScreen.main.bounds.width / 2)+25, y: 15)// Posiziona il bottone al centro orizzontalmente, 300 punti dal bordo superiore
 
                     Spacer()
                 }

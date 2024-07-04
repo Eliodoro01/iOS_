@@ -11,7 +11,6 @@ struct AlbumView: View {
     @State private var isSpeaking = false
     @State private var currentUtterance: AVSpeechUtterance?
     @State private var shouldResumeSpeech = false
-    @State private var playbackPosition: Int = 0 // Traccia la posizione di riproduzione
     @State private var currentIndex: Int = 0 // Indice dell'immagine corrente
 
     var body: some View {
@@ -60,7 +59,7 @@ struct AlbumView: View {
                             .background(Color.blue)
                             .clipShape(Circle())
                             .overlay(
-                                Circle().stroke(Color.black, lineWidth: 2)
+                                Circle().stroke(Color.black, lineWidth: 1)
                             )
                     }
 
@@ -184,7 +183,7 @@ struct AlbumView: View {
         }
 
         shouldResumeSpeech = false
-        playbackPosition = index
+        currentIndex = index
     }
 
     private func toggleSpeech() {
@@ -205,9 +204,9 @@ struct AlbumView: View {
     }
 
     private func repeatContent() {
-        if let currentImage = album.images[safe: playbackPosition] {
+        if let currentImage = album.images[safe: currentIndex] {
             let text = recognizeText(from: currentImage)
-            speakText(text, atIndex: playbackPosition)
+            speakText(text, atIndex: currentIndex)
         }
     }
 
@@ -230,7 +229,7 @@ struct AlbumView: View {
             currentIndex = 0
         }
         
-        // Speak the text of the new current image if speech is active
+        
         if isSpeaking {
             let text = recognizeText(from: album.images[currentIndex])
             speakText(text, atIndex: currentIndex)

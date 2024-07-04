@@ -8,6 +8,8 @@
 import SwiftUI
 import UIKit
 import SwiftUI
+import AVFoundation
+
 
 struct ImagePicker: UIViewControllerRepresentable {
     @Environment(\.presentationMode) private var presentationMode
@@ -16,6 +18,13 @@ struct ImagePicker: UIViewControllerRepresentable {
     // vuole scattare una nuova foto
     var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @Binding var selectedImage: UIImage
+    let synthesizer = AVSpeechSynthesizer()
+    @State private var isSpeaking = false
+    @State private var currentUtterance: AVSpeechUtterance?
+    @State private var shouldResumeSpeech = false
+    @State private var playbackPosition: Int = 0 // Traccia la posizione di riproduzione
+    @State private var currentIndex: Int = 0 // Indice dell'immagine corrente
+
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
 

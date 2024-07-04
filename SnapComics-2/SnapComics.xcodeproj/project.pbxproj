@@ -12,6 +12,7 @@
 		663187F62C3532B4007B01AE /* PrimoTest030724.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 663187F52C3532B4007B01AE /* PrimoTest030724.mlmodel */; };
 		663187FA2C358140007B01AE /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663187F92C358140007B01AE /* ImageView.swift */; };
 		663187FC2C3587F2007B01AE /* PreloadedImages in Resources */ = {isa = PBXBuildFile; fileRef = 663187FB2C3587F2007B01AE /* PreloadedImages */; };
+		663187FE2C36C81C007B01AE /* SecondoAddestramento 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 663187FD2C36C81C007B01AE /* SecondoAddestramento 1.mlmodel */; };
 		664899192C29B68F00BA1DCF /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664899182C29B68F00BA1DCF /* SwiftUIView.swift */; };
 		6A6C71DE2C2C0AA1006139D5 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6C71DD2C2C0AA1006139D5 /* AlbumView.swift */; };
 		6A6C71E02C2C2B50006139D5 /* MyImageClassifier 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6A6C71DF2C2C2B50006139D5 /* MyImageClassifier 1.mlmodel */; };
@@ -50,6 +51,7 @@
 		663187F52C3532B4007B01AE /* PrimoTest030724.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PrimoTest030724.mlmodel; sourceTree = "<group>"; };
 		663187F92C358140007B01AE /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		663187FB2C3587F2007B01AE /* PreloadedImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PreloadedImages; sourceTree = "<group>"; };
+		663187FD2C36C81C007B01AE /* SecondoAddestramento 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "SecondoAddestramento 1.mlmodel"; sourceTree = "<group>"; };
 		664899182C29B68F00BA1DCF /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		6A6C71DD2C2C0AA1006139D5 /* AlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
 		6A6C71DF2C2C2B50006139D5 /* MyImageClassifier 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "MyImageClassifier 1.mlmodel"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		9A3922812B2C4ACE0088C56E /* App_swiftiu */ = {
 			isa = PBXGroup;
 			children = (
+				663187FD2C36C81C007B01AE /* SecondoAddestramento 1.mlmodel */,
 				663187F52C3532B4007B01AE /* PrimoTest030724.mlmodel */,
 				9A8D67952B30995900462A9B /* App-swiftiu-Info.plist */,
 				9A3922822B2C4ACE0088C56E /* App_swiftiuApp.swift */,
@@ -296,6 +299,7 @@
 				663187FA2C358140007B01AE /* ImageView.swift in Sources */,
 				9ADD591B2B30832B0067B547 /* ImagePicker.swift in Sources */,
 				663187F62C3532B4007B01AE /* PrimoTest030724.mlmodel in Sources */,
+				663187FE2C36C81C007B01AE /* SecondoAddestramento 1.mlmodel in Sources */,
 				9AA3D9932B32F5A00012643A /* ml3.mlmodel in Sources */,
 				6A6C71E02C2C2B50006139D5 /* MyImageClassifier 1.mlmodel in Sources */,
 				663187F02C2BFE91007B01AE /* PHPickerViewController.swift in Sources */,

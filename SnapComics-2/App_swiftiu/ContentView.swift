@@ -522,13 +522,16 @@ struct ContentView: View {
             return
         }
 
-        guard let model = try? VNCoreMLModel(for: MIC().model) else {
+        guard let model = try? VNCoreMLModel(for: SecondoAddestramento_1().model) else {
             print("Errore durante il caricamento del modello di Object Detection.")
             return
         }
 
         let request = VNCoreMLRequest(model: model) { request, error in
-            guard let results = request.results as? [VNRecognizedObjectObservation] else { return }
+            guard let results = request.results as? [VNRecognizedObjectObservation] else {
+                print("Nessun risultato trovato nella richiesta di Object Detection.")
+                return
+            }
 
             DispatchQueue.main.async {
                 detectedObjects.removeAll()

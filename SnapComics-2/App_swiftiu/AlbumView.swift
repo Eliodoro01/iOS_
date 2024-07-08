@@ -12,106 +12,133 @@ struct AlbumView: View {
     @State private var currentUtterance: AVSpeechUtterance?
     @State private var shouldResumeSpeech = false
     @State private var currentIndex: Int = 0 // Indice dell'immagine corrente
+    @State private var currentIndexVisible: Int? // Indice dell'immagine corrente visibile
 
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(spacing: 10) {
-                if let coverImage = album.coverImage {
-                    Image(uiImage: coverImage)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 200, height: 200)
-                        .cornerRadius(10)
-                        .shadow(radius: 3)
-                        .clipped()
-                }
-
-                ForEach(album.images.indices, id: \.self) { index in
-                    let image = album.images[index]
-                    Image(uiImage: image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 200, height: 200)
-                        .cornerRadius(10)
-                        .shadow(radius: 3)
-                        .onTapGesture {
-                            let text = recognizeText(from: image)
-                            speakText(text, atIndex: index)
+        VStack {
+            ScrollViewReader { scrollViewProxy in
+                ScrollView(showsIndicators: false) {
+                    VStack(spacing: 10) {
+                        if let coverImage = album.coverImage {
+                            Image(uiImage: coverImage)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 200, height: 200)
+                                .cornerRadius(10)
+                                .shadow(radius: 3)
+                                .clipped()
+                                .id(-1) // ID unico per la cover image
                         }
-                        .opacity(index == currentIndex ? 1.0 : 0.6) // Opacità immagine corrente
+
+                        ForEach(album.images.indices, id: \.self) { index in
+                            GeometryReader { geometry in
+                                let image = album.images[index]
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 200, height: 200)
+                                    .cornerRadius(10)
+                                    .shadow(radius: 3)
+                                    .onTapGesture {
+                                        let text = recognizeText(from: image)
+                                        speakText(text, atIndex: index)
+                                    }
+                                    .opacity(index == currentIndex ? 1.0 : 0.6) // Opacità immagine corrente
+                                    .id(index)
+                                    .background(
+                                        GeometryReader { proxy in
+                                            Color.clear
+                                                .onAppear {
+                                                    if currentIndexVisible == nil {
+                                                        currentIndexVisible = currentIndex
+                                                        scrollToCurrentImage(scrollViewProxy: scrollViewProxy, index: currentIndex)
+                                                    }
+                                                }
+                                                .onChange(of: currentIndex) { newIndex in
+                                                    currentIndexVisible = newIndex
+                                                    scrollToCurrentImage(scrollViewProxy: scrollViewProxy, index: newIndex)
+                                                }
+                                        }
+                                    )
+                            }
+                            .frame(width: 200, height: 200)
+                            .cornerRadius(10)
+                            .shadow(radius: 3)
+                        }
+
+                        Text("Created on: \(album.formattedCreationDateTime)")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                            .padding(.top, 10)
+                    }
+                    .padding()
+                }
+            }
+
+            HStack(spacing: 20) {
+                Button(action: {
+                    previousImage()
+                }) {
+                    Image(systemName: "arrow.left")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 40, height: 40)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.blue)
+                        .clipShape(Circle())
+                        .overlay(
+                            Circle().stroke(Color.black, lineWidth: 1)
+                        )
                 }
 
-                Text("Created on: \(album.formattedCreationDateTime)")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-                    .padding(.top, 10)
-
-                HStack(spacing: 20) {
-                    Button(action: {
-                        previousImage()
-                    }) {
-                        Image(systemName: "arrow.left")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 40, height: 40)
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color.blue)
-                            .clipShape(Circle())
-                            .overlay(
-                                Circle().stroke(Color.black, lineWidth: 1)
-                            )
-                    }
-
-                    Button(action: {
-                        toggleSpeech()
-                    }) {
-                        Image(systemName: isSpeaking ? "pause.fill" : "play.fill")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 40, height: 40)
-                            .foregroundColor(.blue)
-                            .padding()
-                            .background(Color.white)
-                            .clipShape(Circle())
-                            .overlay(
-                                Circle().stroke(Color.black, lineWidth: 2)
-                            )
-                    }
-
-                    Button(action: {
-                        repeatContent()
-                    }) {
-                        Image(systemName: "arrow.counterclockwise")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 40, height: 40)
-                            .foregroundColor(.blue)
-                            .padding()
-                            .background(Color.white)
-                            .clipShape(Circle())
-                            .overlay(
-                                Circle().stroke(Color.black, lineWidth: 2)
-                            )
-                    }
-
-                    Button(action: {
-                        nextImage()
-                    }) {
-                        Image(systemName: "arrow.right")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 40, height: 40)
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color.blue)
-                            .clipShape(Circle())
-                            .overlay(
-                                Circle().stroke(Color.black, lineWidth: 2)
-                            )
-                    }
+                Button(action: {
+                    toggleSpeech()
+                }) {
+                    Image(systemName: isSpeaking ? "pause.fill" : "play.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 40, height: 40)
+                        .foregroundColor(.blue)
+                        .padding()
+                        .background(Color.white)
+                        .clipShape(Circle())
+                        .overlay(
+                            Circle().stroke(Color.black, lineWidth: 2)
+                        )
                 }
-                .padding(.top, 20)
+
+                Button(action: {
+                    repeatContent()
+                }) {
+                    Image(systemName: "arrow.counterclockwise")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 40, height: 40)
+                        .foregroundColor(.blue)
+                        .padding()
+                        .background(Color.white)
+                        .clipShape(Circle())
+                        .overlay(
+                            Circle().stroke(Color.black, lineWidth: 2)
+                        )
+                }
+
+                Button(action: {
+                    nextImage()
+                }) {
+                    Image(systemName: "arrow.right")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 40, height: 40)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.blue)
+                        .clipShape(Circle())
+                        .overlay(
+                            Circle().stroke(Color.black, lineWidth: 2)
+                        )
+                }
             }
             .padding()
         }
@@ -229,10 +256,18 @@ struct AlbumView: View {
             currentIndex = 0
         }
         
-        
+        // Speak the text of the new current image if speech is active
         if isSpeaking {
             let text = recognizeText(from: album.images[currentIndex])
             speakText(text, atIndex: currentIndex)
+        }
+    }
+
+    private func scrollToCurrentImage(scrollViewProxy: ScrollViewProxy, index: Int) {
+        guard let currentIndexVisible = currentIndexVisible else { return }
+        
+        withAnimation {
+            scrollViewProxy.scrollTo(currentIndexVisible, anchor: .center)
         }
     }
 }

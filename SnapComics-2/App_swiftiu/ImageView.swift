@@ -19,8 +19,8 @@ struct ImageView: View {
                     .foregroundColor(.gray)
                     .padding()
             } else {
-                ScrollView {
-                    LazyVStack(alignment: .leading, spacing: 20) {
+                ScrollView(.vertical) { // ScrollView verticale per scorrere le immagini da sopra a sotto
+                    LazyVStack(spacing: 20) {
                         ForEach(images.indices, id: \.self) { index in
                             ImageViewItem(image: images[index], isCurrent: index == currentIndex)
                                 .onTapGesture {
@@ -28,6 +28,7 @@ struct ImageView: View {
                                     speakText(text)
                                     currentIndex = index
                                 }
+                                .frame(maxWidth: .infinity) // Espande l'immagine alla larghezza massima disponibile
                         }
                     }
                     .padding()
@@ -169,14 +170,24 @@ struct ImageView: View {
 
         var recognizedText = ""
 
-        let handler = VNImageRequestHandler(ciImage: ciImage)
+        let handler = VNImageRequestHandler(ciImage: ciImage, options: [:]) // Opzioni vuote per configurare la richiesta
+
+        // Configurazione per specificare l'orientazione preferita
         let ocrRequest = VNRecognizeTextRequest { request, error in
             if let results = request.results as? [VNRecognizedTextObservation] {
-                recognizedText = results.compactMap { observation in
+                // Ordina le osservazioni in base alla posizione y per mantenere l'ordine verticale corretto
+                let sortedResults = results.sorted { $0.boundingBox.origin.y < $1.boundingBox.origin.y }
+                recognizedText = sortedResults.compactMap { observation in
                     observation.topCandidates(1).first?.string
-                }.joined(separator: "\n")
+                }.reversed().joined(separator: "\n") // Inverte l'ordine delle righe riconosciute
             }
         }
+        
+        // Imposta l'orientazione preferita per la lettura da sinistra a destra
+        ocrRequest.recognitionLevel = .accurate
+        ocrRequest.usesLanguageCorrection = true
+        ocrRequest.recognitionLanguages = ["it-IT"]
+        ocrRequest.customWords = ["Nessuna"]
 
         do {
             try handler.perform([ocrRequest])
@@ -186,6 +197,7 @@ struct ImageView: View {
 
         return recognizedText
     }
+
 
     // Funzione per avviare o fermare la sintesi vocale del testo riconosciuto
     private func toggleSpeech() {
@@ -218,12 +230,14 @@ struct ImageView: View {
     // Funzione per avviare la sintesi vocale con il testo fornito
     private func speakText(_ text: String) {
         let utterance = AVSpeechUtterance(string: text)
-        utterance.rate = 0.5
+        utterance.rate = 0.25
         utterance.voice = AVSpeechSynthesisVoice(language: "it-IT")
 
-        if synthesizer.isSpeaking {
-            shouldResumeSpeech = true
-            synthesizer.pauseSpeaking(at: .immediate)
+        // Se la sintesi vocale è in pausa e deve riprendere, continua
+        if shouldResumeSpeech {
+            synthesizer.continueSpeaking()
+            shouldResumeSpeech = false // Resetta il flag
+            isSpeaking = true
         } else {
             synthesizer.speak(utterance)
             isSpeaking = true
@@ -234,28 +248,38 @@ struct ImageView: View {
 
     // Funzione per passare all'immagine precedente
     private func previousImage() {
+        // Stoppa la sintesi vocale se è in corso
+        if isSpeaking {
+            synthesizer.stopSpeaking(at: .immediate)
+            isSpeaking = false
+        }
+
         currentIndex -= 1
         if currentIndex < 0 {
             currentIndex = images.count - 1
         }
 
-        if isSpeaking {
-            let text = recognizeText(from: images[currentIndex])
-            speakText(text)
-        }
+        // Avvia la sintesi vocale con il testo dell'immagine corrente
+        let text = recognizeText(from: images[currentIndex])
+        speakText(text)
     }
 
     // Funzione per passare all'immagine successiva
     private func nextImage() {
+        // Stoppa la sintesi vocale se è in corso
+        if isSpeaking {
+            synthesizer.stopSpeaking(at: .immediate)
+            isSpeaking = false
+        }
+
         currentIndex += 1
         if currentIndex >= images.count {
             currentIndex = 0
         }
 
-        if isSpeaking {
-            let text = recognizeText(from: images[currentIndex])
-            speakText(text)
-        }
+        // Avvia la sintesi vocale con il testo dell'immagine corrente
+        let text = recognizeText(from: images[currentIndex])
+        speakText(text)
     }
 }
 

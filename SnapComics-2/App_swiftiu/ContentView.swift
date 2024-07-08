@@ -136,10 +136,10 @@ struct ContentView: View {
             return
         }
 
-        let model: TOPOLINODETECTOR_1 = {
+        let model: PIPPO_1 = {
             do {
                 let config = MLModelConfiguration()
-                return try TOPOLINODETECTOR_1(configuration: config)
+                return try PIPPO_1(configuration: config)
             } catch {
                 print(error)
                 fatalError("Couldn't create SleepCalculator")

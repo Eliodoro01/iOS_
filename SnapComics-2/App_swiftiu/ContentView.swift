@@ -136,10 +136,10 @@ struct ContentView: View {
             return
         }
 
-        let model: prova = {
+        let model: ultimo_addestramento = {
             do {
                 let config = MLModelConfiguration()
-                return try prova(configuration: config)
+                return try ultimo_addestramento(configuration: config)
             } catch {
                 print(error)
                 fatalError("Couldn't create SleepCalculator")

@@ -11,10 +11,9 @@
 		663187F42C2C5C28007B01AE /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663187F32C2C5C28007B01AE /* Album.swift */; };
 		663187FA2C358140007B01AE /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663187F92C358140007B01AE /* ImageView.swift */; };
 		663187FC2C3587F2007B01AE /* PreloadedImages in Resources */ = {isa = PBXBuildFile; fileRef = 663187FB2C3587F2007B01AE /* PreloadedImages */; };
-		663188042C36D78A007B01AE /* SecondoAddestramento 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 663188032C36D78A007B01AE /* SecondoAddestramento 1.mlmodel */; };
-		663188062C36DA53007B01AE /* prova.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 663188052C36DA53007B01AE /* prova.mlmodel */; };
 		664899192C29B68F00BA1DCF /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664899182C29B68F00BA1DCF /* SwiftUIView.swift */; };
 		6A6C71DE2C2C0AA1006139D5 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6C71DD2C2C0AA1006139D5 /* AlbumView.swift */; };
+		6AE762972C3BCF92004288C5 /* ultimo addestramento.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6AE762962C3BCF92004288C5 /* ultimo addestramento.mlmodel */; };
 		9A3922832B2C4ACE0088C56E /* App_swiftiuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3922822B2C4ACE0088C56E /* App_swiftiuApp.swift */; };
 		9A3922852B2C4ACE0088C56E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3922842B2C4ACE0088C56E /* ContentView.swift */; };
 		9A3922872B2C4ACF0088C56E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A3922862B2C4ACF0088C56E /* Assets.xcassets */; };
@@ -48,10 +47,9 @@
 		663187F32C2C5C28007B01AE /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		663187F92C358140007B01AE /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		663187FB2C3587F2007B01AE /* PreloadedImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PreloadedImages; sourceTree = "<group>"; };
-		663188032C36D78A007B01AE /* SecondoAddestramento 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "SecondoAddestramento 1.mlmodel"; sourceTree = "<group>"; };
-		663188052C36DA53007B01AE /* prova.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = prova.mlmodel; sourceTree = "<group>"; };
 		664899182C29B68F00BA1DCF /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		6A6C71DD2C2C0AA1006139D5 /* AlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
+		6AE762962C3BCF92004288C5 /* ultimo addestramento.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "ultimo addestramento.mlmodel"; sourceTree = "<group>"; };
 		9A39227F2B2C4ACE0088C56E /* App_swiftiu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App_swiftiu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A3922822B2C4ACE0088C56E /* App_swiftiuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App_swiftiuApp.swift; sourceTree = "<group>"; };
 		9A3922842B2C4ACE0088C56E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -116,8 +114,7 @@
 		9A3922812B2C4ACE0088C56E /* App_swiftiu */ = {
 			isa = PBXGroup;
 			children = (
-				663188052C36DA53007B01AE /* prova.mlmodel */,
-				663188032C36D78A007B01AE /* SecondoAddestramento 1.mlmodel */,
+				6AE762962C3BCF92004288C5 /* ultimo addestramento.mlmodel */,
 				9A8D67952B30995900462A9B /* App-swiftiu-Info.plist */,
 				9A3922822B2C4ACE0088C56E /* App_swiftiuApp.swift */,
 				9AA3D9922B32F5A00012643A /* ml3.mlmodel */,
@@ -291,8 +288,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				663187FA2C358140007B01AE /* ImageView.swift in Sources */,
+				6AE762972C3BCF92004288C5 /* ultimo addestramento.mlmodel in Sources */,
 				9ADD591B2B30832B0067B547 /* ImagePicker.swift in Sources */,
-				663188062C36DA53007B01AE /* prova.mlmodel in Sources */,
 				9AA3D9932B32F5A00012643A /* ml3.mlmodel in Sources */,
 				663187F02C2BFE91007B01AE /* PHPickerViewController.swift in Sources */,
 				6A6C71DE2C2C0AA1006139D5 /* AlbumView.swift in Sources */,
@@ -300,7 +297,6 @@
 				9A3922832B2C4ACE0088C56E /* App_swiftiuApp.swift in Sources */,
 				663187F42C2C5C28007B01AE /* Album.swift in Sources */,
 				664899192C29B68F00BA1DCF /* SwiftUIView.swift in Sources */,
-				663188042C36D78A007B01AE /* SecondoAddestramento 1.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,7 +460,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"App_swiftiu/Preview Content\"";
-				DEVELOPMENT_TEAM = 8CC433854S;
+				DEVELOPMENT_TEAM = 8MS6LAH78U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "App-swiftiu-Info.plist";
@@ -481,7 +477,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.giuseppe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -497,7 +493,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"App_swiftiu/Preview Content\"";
-				DEVELOPMENT_TEAM = 8CC433854S;
+				DEVELOPMENT_TEAM = 8MS6LAH78U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "App-swiftiu-Info.plist";
@@ -514,7 +510,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.giuseppe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

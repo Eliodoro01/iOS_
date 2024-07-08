@@ -15,6 +15,8 @@
 		6A6C71DE2C2C0AA1006139D5 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6C71DD2C2C0AA1006139D5 /* AlbumView.swift */; };
 		6AE762972C3BCF92004288C5 /* ultimo addestramento.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6AE762962C3BCF92004288C5 /* ultimo addestramento.mlmodel */; };
 		6AE762992C3BEADF004288C5 /* TOPOLINODETECTOR 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6AE762982C3BEADF004288C5 /* TOPOLINODETECTOR 1.mlmodel */; };
+		6AE7629B2C3BEF35004288C5 /* AUTOGEN 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6AE7629A2C3BEF35004288C5 /* AUTOGEN 1.mlmodel */; };
+		6AE7629D2C3BF785004288C5 /* PIPPO 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6AE7629C2C3BF785004288C5 /* PIPPO 1.mlmodel */; };
 		9A3922832B2C4ACE0088C56E /* App_swiftiuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3922822B2C4ACE0088C56E /* App_swiftiuApp.swift */; };
 		9A3922852B2C4ACE0088C56E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3922842B2C4ACE0088C56E /* ContentView.swift */; };
 		9A3922872B2C4ACF0088C56E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A3922862B2C4ACF0088C56E /* Assets.xcassets */; };
@@ -52,6 +54,8 @@
 		6A6C71DD2C2C0AA1006139D5 /* AlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
 		6AE762962C3BCF92004288C5 /* ultimo addestramento.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "ultimo addestramento.mlmodel"; sourceTree = "<group>"; };
 		6AE762982C3BEADF004288C5 /* TOPOLINODETECTOR 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "TOPOLINODETECTOR 1.mlmodel"; sourceTree = "<group>"; };
+		6AE7629A2C3BEF35004288C5 /* AUTOGEN 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "AUTOGEN 1.mlmodel"; sourceTree = "<group>"; };
+		6AE7629C2C3BF785004288C5 /* PIPPO 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "PIPPO 1.mlmodel"; sourceTree = "<group>"; };
 		9A39227F2B2C4ACE0088C56E /* App_swiftiu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App_swiftiu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A3922822B2C4ACE0088C56E /* App_swiftiuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App_swiftiuApp.swift; sourceTree = "<group>"; };
 		9A3922842B2C4ACE0088C56E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 		9A3922812B2C4ACE0088C56E /* App_swiftiu */ = {
 			isa = PBXGroup;
 			children = (
+				6AE7629C2C3BF785004288C5 /* PIPPO 1.mlmodel */,
 				6AE762982C3BEADF004288C5 /* TOPOLINODETECTOR 1.mlmodel */,
 				6AE762962C3BCF92004288C5 /* ultimo addestramento.mlmodel */,
 				9A8D67952B30995900462A9B /* App-swiftiu-Info.plist */,
@@ -123,6 +128,7 @@
 				9AA3D9922B32F5A00012643A /* ml3.mlmodel */,
 				9A3922842B2C4ACE0088C56E /* ContentView.swift */,
 				9A3922862B2C4ACF0088C56E /* Assets.xcassets */,
+				6AE7629A2C3BEF35004288C5 /* AUTOGEN 1.mlmodel */,
 				9A3922882B2C4ACF0088C56E /* Preview Content */,
 				9ADD591A2B30832B0067B547 /* ImagePicker.swift */,
 				663187F92C358140007B01AE /* ImageView.swift */,
@@ -291,6 +297,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				663187FA2C358140007B01AE /* ImageView.swift in Sources */,
+				6AE7629B2C3BEF35004288C5 /* AUTOGEN 1.mlmodel in Sources */,
+				6AE7629D2C3BF785004288C5 /* PIPPO 1.mlmodel in Sources */,
 				6AE762972C3BCF92004288C5 /* ultimo addestramento.mlmodel in Sources */,
 				9ADD591B2B30832B0067B547 /* ImagePicker.swift in Sources */,
 				9AA3D9932B32F5A00012643A /* ml3.mlmodel in Sources */,

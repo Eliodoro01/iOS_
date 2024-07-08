@@ -18,36 +18,6 @@
             endingLineNumber = "164"
             landmarkName = "performObjectDetection(on:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "09AE3859-C11B-447C-B68D-3EDABB6A07C4 - 480b6671e3f0d8f1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #2 (__C.VNRequest, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in App_swiftiu.ContentView.performObjectDetection(on: __C.UIImage) -&gt; ()"
-                  moduleName = "App_swiftiu"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/eliodoromascolo/Documents/GitHub/iOS/SnapComics-2/App_swiftiu/ContentView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "164"
-                  endingLineNumber = "164">
-               </Location>
-               <Location
-                  uuid = "09AE3859-C11B-447C-B68D-3EDABB6A07C4 - 480b6671e3f0d8f1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #2 (__C.VNRequest, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in App_swiftiu.ContentView.performObjectDetection(on: __C.UIImage) -&gt; ()"
-                  moduleName = "App_swiftiu"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/eliodoromascolo/Documents/GitHub/iOS/SnapComics-2/App_swiftiu/ContentView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "164"
-                  endingLineNumber = "164">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

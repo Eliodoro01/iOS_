@@ -14,6 +14,7 @@
 		664899192C29B68F00BA1DCF /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664899182C29B68F00BA1DCF /* SwiftUIView.swift */; };
 		6A6C71DE2C2C0AA1006139D5 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6C71DD2C2C0AA1006139D5 /* AlbumView.swift */; };
 		6AE762972C3BCF92004288C5 /* ultimo addestramento.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6AE762962C3BCF92004288C5 /* ultimo addestramento.mlmodel */; };
+		6AE762992C3BEADF004288C5 /* TOPOLINODETECTOR 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6AE762982C3BEADF004288C5 /* TOPOLINODETECTOR 1.mlmodel */; };
 		9A3922832B2C4ACE0088C56E /* App_swiftiuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3922822B2C4ACE0088C56E /* App_swiftiuApp.swift */; };
 		9A3922852B2C4ACE0088C56E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3922842B2C4ACE0088C56E /* ContentView.swift */; };
 		9A3922872B2C4ACF0088C56E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A3922862B2C4ACF0088C56E /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		664899182C29B68F00BA1DCF /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		6A6C71DD2C2C0AA1006139D5 /* AlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
 		6AE762962C3BCF92004288C5 /* ultimo addestramento.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "ultimo addestramento.mlmodel"; sourceTree = "<group>"; };
+		6AE762982C3BEADF004288C5 /* TOPOLINODETECTOR 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "TOPOLINODETECTOR 1.mlmodel"; sourceTree = "<group>"; };
 		9A39227F2B2C4ACE0088C56E /* App_swiftiu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App_swiftiu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A3922822B2C4ACE0088C56E /* App_swiftiuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App_swiftiuApp.swift; sourceTree = "<group>"; };
 		9A3922842B2C4ACE0088C56E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		9A3922812B2C4ACE0088C56E /* App_swiftiu */ = {
 			isa = PBXGroup;
 			children = (
+				6AE762982C3BEADF004288C5 /* TOPOLINODETECTOR 1.mlmodel */,
 				6AE762962C3BCF92004288C5 /* ultimo addestramento.mlmodel */,
 				9A8D67952B30995900462A9B /* App-swiftiu-Info.plist */,
 				9A3922822B2C4ACE0088C56E /* App_swiftiuApp.swift */,
@@ -295,6 +298,7 @@
 				6A6C71DE2C2C0AA1006139D5 /* AlbumView.swift in Sources */,
 				9A3922852B2C4ACE0088C56E /* ContentView.swift in Sources */,
 				9A3922832B2C4ACE0088C56E /* App_swiftiuApp.swift in Sources */,
+				6AE762992C3BEADF004288C5 /* TOPOLINODETECTOR 1.mlmodel in Sources */,
 				663187F42C2C5C28007B01AE /* Album.swift in Sources */,
 				664899192C29B68F00BA1DCF /* SwiftUIView.swift in Sources */,
 			);

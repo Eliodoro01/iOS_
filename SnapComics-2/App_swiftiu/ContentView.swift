@@ -8,6 +8,7 @@ struct ContentView: View {
     @State private var detectedObjects: [String] = []
     @State private var scannedText: String?
     @State private var characterDetected: String?
+    @State private var showAlert = true
     let synthesizer = AVSpeechSynthesizer()
 
     var body: some View {
@@ -111,6 +112,29 @@ struct ContentView: View {
                     }
                 }
             }
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Termini e Condizioni"),
+                    message: Text("""
+                    I contenuti interni all'app non riguardano pirateria ma sono di possesso personale.
+                    Si prega di accettare i termini e condizioni per proseguire.
+
+                    Termini e Condizioni:
+                    • L'app non deve essere utilizzata per scopi illegali.
+                    • Qualsiasi forma di pirateria è un reato e perseguibile per legge.
+                    • L'utente è responsabile per qualsiasi contenuto caricato nell'app.
+                    • L'app deve essere utilizzata solo per fini personali e non commerciali.
+
+                    Premi "Accetto" per continuare.
+                    """),
+                    primaryButton: .destructive(Text("Rifiuto"), action: {
+                        exit(0)
+                    }),
+                    secondaryButton: .default(Text("Accetto"), action: {
+                        showAlert = false
+                    })
+                )
+            }
             .sheet(isPresented: $isImagePickerPresented, onDismiss: loadImage) {
                 ImagePicker(sourceType: .camera, selectedImage: $capturedImage)
             }
@@ -145,7 +169,6 @@ struct ContentView: View {
                 fatalError("Couldn't create SleepCalculator")
             }
         }()
-        
         
         guard let model = try? VNCoreMLModel(for: model.model) else {
             print("Errore durante il caricamento del modello di Object Detection.")

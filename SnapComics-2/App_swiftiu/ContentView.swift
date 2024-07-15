@@ -116,14 +116,13 @@ struct ContentView: View {
                 Alert(
                     title: Text("Termini e Condizioni"),
                     message: Text("""
-                    I contenuti interni all'app non riguardano pirateria ma sono di possesso personale.
-                    Si prega di accettare i termini e condizioni per proseguire.
+                    Utilizzando quest app, l'utente accetta i seguenti termini e condizioni:
 
-                    Termini e Condizioni:
                     • L'app non deve essere utilizzata per scopi illegali.
-                    • Qualsiasi forma di pirateria è un reato e perseguibile per legge.
-                    • L'utente è responsabile per qualsiasi contenuto caricato nell'app.
+                    • L'utente è l'unico responsabile per qualsiasi contenuto caricato nell'app,qualsiasi uso improprio o illegale è punibile a norma di legge.
                     • L'app deve essere utilizzata solo per fini personali e non commerciali.
+                    • Gli sviluppatori dell'app non sono responsabili per eventuali violazioni di copryright o altri utilizzi illegali dei contenuti da parte degli utenti
+                    
 
                     Premi "Accetto" per continuare.
                     """),

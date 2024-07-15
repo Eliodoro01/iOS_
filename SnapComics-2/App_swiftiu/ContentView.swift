@@ -159,10 +159,10 @@ struct ContentView: View {
             return
         }
 
-        let model: PIPPO_1 = {
+        let model: MLFinale = {
             do {
                 let config = MLModelConfiguration()
-                return try PIPPO_1(configuration: config)
+                return try MLFinale(configuration: config)
             } catch {
                 print(error)
                 fatalError("Couldn't create SleepCalculator")

@@ -13,9 +13,8 @@
 		663187FC2C3587F2007B01AE /* PreloadedImages in Resources */ = {isa = PBXBuildFile; fileRef = 663187FB2C3587F2007B01AE /* PreloadedImages */; };
 		664899192C29B68F00BA1DCF /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664899182C29B68F00BA1DCF /* SwiftUIView.swift */; };
 		6A6C71DE2C2C0AA1006139D5 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6C71DD2C2C0AA1006139D5 /* AlbumView.swift */; };
-		6AE762992C3BEADF004288C5 /* TOPOLINODETECTOR 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6AE762982C3BEADF004288C5 /* TOPOLINODETECTOR 1.mlmodel */; };
-		6AE7629D2C3BF785004288C5 /* PIPPO 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6AE7629C2C3BF785004288C5 /* PIPPO 1.mlmodel */; };
 		6AE762A12C456734004288C5 /* MLFinale.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6AE762A02C456734004288C5 /* MLFinale.mlmodel */; };
+		6AE762A32C499C98004288C5 /* Disney2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6AE762A22C499C98004288C5 /* Disney2.mlmodel */; };
 		9A3922832B2C4ACE0088C56E /* App_swiftiuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3922822B2C4ACE0088C56E /* App_swiftiuApp.swift */; };
 		9A3922852B2C4ACE0088C56E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3922842B2C4ACE0088C56E /* ContentView.swift */; };
 		9A3922872B2C4ACF0088C56E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A3922862B2C4ACF0088C56E /* Assets.xcassets */; };
@@ -23,7 +22,6 @@
 		9A3922942B2C4ACF0088C56E /* App_swiftiuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3922932B2C4ACF0088C56E /* App_swiftiuTests.swift */; };
 		9A39229E2B2C4ACF0088C56E /* App_swiftiuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39229D2B2C4ACF0088C56E /* App_swiftiuUITests.swift */; };
 		9A3922A02B2C4ACF0088C56E /* App_swiftiuUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39229F2B2C4ACF0088C56E /* App_swiftiuUITestsLaunchTests.swift */; };
-		9AA3D9932B32F5A00012643A /* ml3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3D9922B32F5A00012643A /* ml3.mlmodel */; };
 		9ADD591B2B30832B0067B547 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADD591A2B30832B0067B547 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,9 +49,8 @@
 		663187FB2C3587F2007B01AE /* PreloadedImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PreloadedImages; sourceTree = "<group>"; };
 		664899182C29B68F00BA1DCF /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		6A6C71DD2C2C0AA1006139D5 /* AlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
-		6AE762982C3BEADF004288C5 /* TOPOLINODETECTOR 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "TOPOLINODETECTOR 1.mlmodel"; sourceTree = "<group>"; };
-		6AE7629C2C3BF785004288C5 /* PIPPO 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "PIPPO 1.mlmodel"; sourceTree = "<group>"; };
 		6AE762A02C456734004288C5 /* MLFinale.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MLFinale.mlmodel; sourceTree = "<group>"; };
+		6AE762A22C499C98004288C5 /* Disney2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Disney2.mlmodel; sourceTree = "<group>"; };
 		9A39227F2B2C4ACE0088C56E /* App_swiftiu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App_swiftiu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A3922822B2C4ACE0088C56E /* App_swiftiuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App_swiftiuApp.swift; sourceTree = "<group>"; };
 		9A3922842B2C4ACE0088C56E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,7 +62,6 @@
 		9A39229D2B2C4ACF0088C56E /* App_swiftiuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App_swiftiuUITests.swift; sourceTree = "<group>"; };
 		9A39229F2B2C4ACF0088C56E /* App_swiftiuUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App_swiftiuUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9A8D67952B30995900462A9B /* App-swiftiu-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "App-swiftiu-Info.plist"; sourceTree = SOURCE_ROOT; };
-		9AA3D9922B32F5A00012643A /* ml3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ml3.mlmodel; sourceTree = "<group>"; };
 		9ADD591A2B30832B0067B547 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,12 +114,10 @@
 		9A3922812B2C4ACE0088C56E /* App_swiftiu */ = {
 			isa = PBXGroup;
 			children = (
-				6AE7629C2C3BF785004288C5 /* PIPPO 1.mlmodel */,
-				6AE762982C3BEADF004288C5 /* TOPOLINODETECTOR 1.mlmodel */,
+				6AE762A22C499C98004288C5 /* Disney2.mlmodel */,
 				6AE762A02C456734004288C5 /* MLFinale.mlmodel */,
 				9A8D67952B30995900462A9B /* App-swiftiu-Info.plist */,
 				9A3922822B2C4ACE0088C56E /* App_swiftiuApp.swift */,
-				9AA3D9922B32F5A00012643A /* ml3.mlmodel */,
 				9A3922842B2C4ACE0088C56E /* ContentView.swift */,
 				9A3922862B2C4ACF0088C56E /* Assets.xcassets */,
 				9A3922882B2C4ACF0088C56E /* Preview Content */,
@@ -294,15 +288,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				663187FA2C358140007B01AE /* ImageView.swift in Sources */,
-				6AE7629D2C3BF785004288C5 /* PIPPO 1.mlmodel in Sources */,
+				6AE762A32C499C98004288C5 /* Disney2.mlmodel in Sources */,
 				9ADD591B2B30832B0067B547 /* ImagePicker.swift in Sources */,
-				9AA3D9932B32F5A00012643A /* ml3.mlmodel in Sources */,
 				6AE762A12C456734004288C5 /* MLFinale.mlmodel in Sources */,
 				663187F02C2BFE91007B01AE /* PHPickerViewController.swift in Sources */,
 				6A6C71DE2C2C0AA1006139D5 /* AlbumView.swift in Sources */,
 				9A3922852B2C4ACE0088C56E /* ContentView.swift in Sources */,
 				9A3922832B2C4ACE0088C56E /* App_swiftiuApp.swift in Sources */,
-				6AE762992C3BEADF004288C5 /* TOPOLINODETECTOR 1.mlmodel in Sources */,
 				663187F42C2C5C28007B01AE /* Album.swift in Sources */,
 				664899192C29B68F00BA1DCF /* SwiftUIView.swift in Sources */,
 			);
@@ -469,7 +461,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"App_swiftiu/Preview Content\"";
-				DEVELOPMENT_TEAM = 3FP6NRZXKY;
+				DEVELOPMENT_TEAM = 8MS6LAH78U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "App-swiftiu-Info.plist";
@@ -486,7 +478,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.giovanna;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elio.snap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -504,7 +496,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"App_swiftiu/Preview Content\"";
-				DEVELOPMENT_TEAM = 3FP6NRZXKY;
+				DEVELOPMENT_TEAM = 8MS6LAH78U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "App-swiftiu-Info.plist";
@@ -521,7 +513,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.giovanna;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elio.snap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

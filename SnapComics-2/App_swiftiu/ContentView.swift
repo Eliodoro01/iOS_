@@ -159,10 +159,10 @@ struct ContentView: View {
             return
         }
 
-        let model: MLFinale = {
+        let model: Disney2 = {
             do {
                 let config = MLModelConfiguration()
-                return try MLFinale(configuration: config)
+                return try Disney2(configuration: config)
             } catch {
                 print(error)
                 fatalError("Couldn't create SleepCalculator")
